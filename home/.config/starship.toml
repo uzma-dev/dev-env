@@ -1,0 +1,86 @@
+# Starship prompt configuration.
+# Shows: directory → git branch/status → language versions → command duration
+# Docs: https://starship.rs/config/
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Wait up to 500ms for slow commands before showing the prompt
+command_timeout = 500
+
+# Layout of the prompt (each $module is a section)
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$golang\
+$java\
+$c\
+$cmd_duration\
+$line_break\
+$character"""
+
+# ── Directory ─────────────────────────────────────────────────────────────────
+[directory]
+style = "bold blue"
+truncation_length = 3           # show last 3 path segments
+truncate_to_repo = true         # truncate to git root when inside a repo
+read_only = " 󰌾"
+
+# ── Git ────────────────────────────────────────────────────────────────────────
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+style = "red"
+format = '([$all_status$ahead_behind]($style) )'
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count}"
+stashed = "$${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+# ── Languages (only shown when in a relevant project) ─────────────────────────
+[python]
+symbol = " "
+format = 'via [$symbol$pyenv_prefix($version)(\($virtualenv\))]($style) '
+style = "yellow"
+
+[nodejs]
+symbol = " "
+style = "green"
+format = "via [$symbol($version)]($style) "
+
+[golang]
+symbol = " "
+style = "cyan"
+format = "via [$symbol($version)]($style) "
+
+[java]
+symbol = " "
+style = "red"
+format = "via [$symbol($version)]($style) "
+
+[c]
+symbol = " "
+style = "blue"
+format = "via [$symbol($version)]($style) "
+
+# ── Command duration (shows how long the last command took) ───────────────────
+[cmd_duration]
+min_time = 2000                 # only show if command took > 2 seconds
+format = "took [$duration](bold yellow) "
+
+# ── Prompt character ──────────────────────────────────────────────────────────
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"    # shows when in vim normal mode

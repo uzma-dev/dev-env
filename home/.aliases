@@ -1,0 +1,81 @@
+# Shortcuts and command replacements.
+# Sourced by .zshrc on every shell startup.
+
+# ── Navigation ───────────────────────────────────────────────────────────────
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ~='cd ~'
+
+# ── Better defaults ───────────────────────────────────────────────────────────
+# eza is a modern replacement for ls (shows icons, git status, colors)
+alias ls='eza --color=always --icons --group-directories-first'
+alias ll='eza -la --color=always --icons --group-directories-first --git'
+alias lt='eza --tree --level=2 --icons'        # directory tree view
+
+# bat is a modern replacement for cat (syntax highlighting, line numbers)
+alias cat='bat'
+alias vcat='/bin/cat'                           # original cat when needed
+
+# fd is a faster, friendlier replacement for find
+alias find='fd'
+
+# ripgrep is a faster replacement for grep
+alias grep='rg'
+alias vgrep='/usr/bin/grep'                     # original grep when needed
+
+# ── History ───────────────────────────────────────────────────────────────────
+alias h='history'
+alias hs='history | fzf'                        # fuzzy search through history
+alias hg='history | grep'                       # usage: hg <term>
+alias hlast='history | tail -20'               # show last 20 commands
+
+# ── Python ────────────────────────────────────────────────────────────────────
+alias python='python3'
+alias pip='pip3'
+alias venv='python3 -m venv .venv && source .venv/bin/activate'  # create + activate venv
+alias activate='source .venv/bin/activate'
+
+# ── Node / npm ────────────────────────────────────────────────────────────────
+alias ni='npm install'
+alias nr='npm run'
+alias ns='npm start'
+alias nt='npm test'
+
+# ── Git ────────────────────────────────────────────────────────────────────────
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git log --oneline --graph --decorate'
+alias gd='git diff'
+alias gb='git branch'
+alias gco='git checkout'
+alias lzg='lazygit'                             # open lazygit TUI
+
+# ── Homebrew ──────────────────────────────────────────────────────────────────
+alias buu='brew update && brew upgrade && brew cleanup'   # update everything
+alias bls='brew list'
+alias binfo='brew info'
+
+# ── Docker (via OrbStack) ─────────────────────────────────────────────────────
+alias d='docker'
+alias dc='docker compose'
+alias dps='docker ps'
+alias lzd='lazydocker'                          # open lazydocker TUI
+
+# ── Tmux ──────────────────────────────────────────────────────────────────────
+alias ta='tmux attach 2>/dev/null || tmux new -s main'   # attach or start
+alias tl='tmux list-sessions'
+alias tk='tmux kill-session'
+
+# ── System ────────────────────────────────────────────────────────────────────
+alias reload='source ~/.zshrc'                  # reload shell config
+alias path='echo $PATH | tr ":" "\n"'          # print PATH entries one per line
+alias ip='curl -s ifconfig.me'                 # get public IP
+alias ports='lsof -i -P -n | grep LISTEN'      # show open ports
+
+# ── Editors ────────────────────────────────────────────────────────────────────
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias code.='code .'                            # open current dir in VS Code

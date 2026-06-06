@@ -1,0 +1,63 @@
+# Environment variables and PATH configuration.
+# Sourced by .zshrc on every shell startup.
+
+# ── Homebrew ─────────────────────────────────────────────────────────────────
+export HOMEBREW_AUTO_UPDATE_SECS=86400   # Check for updates once per day
+
+# ── XDG Base Directories ─────────────────────────────────────────────────────
+# Standard locations: configs in ~/.config, caches in ~/.cache, data in ~/.local
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_STATE_HOME="${HOME}/.local/state"
+
+# ── PATH ──────────────────────────────────────────────────────────────────────
+# Order matters: entries earlier in the list take priority.
+
+# Homebrew-installed GNU tools override the older BSD versions that ship with macOS
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:${PATH}"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:${PATH}"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:${PATH}"
+
+# Homebrew keg-only tools (not linked by default to avoid conflicts with macOS)
+export PATH="/opt/homebrew/opt/curl/bin:${PATH}"
+export PATH="/opt/homebrew/opt/llvm/bin:${PATH}"   # Modern clang/clang++ for C++
+
+# Language version manager shims
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+
+export NODENV_ROOT="${HOME}/.nodenv"
+export PATH="${NODENV_ROOT}/bin:${PATH}"
+
+export GOENV_ROOT="${HOME}/.goenv"
+export PATH="${GOENV_ROOT}/bin:${PATH}"
+
+export PATH="${HOME}/.jenv/bin:${PATH}"
+
+# User scripts (put your own scripts in ~/bin)
+export PATH="${HOME}/bin:${PATH}"
+
+# ── Editor ────────────────────────────────────────────────────────────────────
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# ── Terminal ──────────────────────────────────────────────────────────────────
+export TERM="xterm-256color"
+
+# ── Python ────────────────────────────────────────────────────────────────────
+export PYTHONIOENCODING="UTF-8"
+
+# ── History ───────────────────────────────────────────────────────────────────
+export HISTSIZE=50000
+export SAVEHIST=50000
+export HISTFILE="${HOME}/.zsh_history"
+
+# ── Go workspace ─────────────────────────────────────────────────────────────
+export GOPATH="${HOME}/go"
+export PATH="${GOPATH}/bin:${PATH}"
+
+# ── C++ (LLVM/clang) ─────────────────────────────────────────────────────────
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
