@@ -78,6 +78,8 @@ cask "the-unarchiver"       # Open .zip, .rar, .7z, .tar.gz files
 cask "appcleaner"           # Completely uninstall apps (removes all related files)
 cask "google-chrome"        # Browser
 cask "brave-browser"        # Browser (privacy-focused, built-in ad blocker)
+cask "whatsapp"             # WhatsApp messaging
+cask "microsoft-word"       # Microsoft Word
 
 # Java JDK (managed by mise)
 cask "temurin"              # Eclipse Temurin OpenJDK (free, open-source)
