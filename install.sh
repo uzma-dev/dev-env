@@ -99,12 +99,15 @@ else
         if [[ -e "${src}" ]] && [[ ! -L "${src}" ]]; then
             mkdir -p "${BACKUP_DIR}/$(dirname "${dotfile}")"
             cp -r "${src}" "${BACKUP_DIR}/${dotfile}"
+            # Remove the original so stow can create the symlink cleanly
+            rm -rf "${src}"
             backed_up=$((backed_up + 1))
         fi
     done
 
     if [[ ${backed_up} -gt 0 ]]; then
         print_success "Backed up ${backed_up} existing files to ${BACKUP_DIR}"
+        print_detail "Originals removed — stow will replace them with symlinks"
     else
         print_detail "No existing dotfiles to back up"
     fi
