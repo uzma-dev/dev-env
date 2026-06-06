@@ -70,7 +70,7 @@ print_action "Installing Homebrew..."
 install_homebrew
 
 print_action "Installing all packages from Brewfile..."
-brew bundle --file="${SCRIPT_DIR}/Brewfile" --no-lock
+brew bundle --file="${SCRIPT_DIR}/Brewfile"
 print_success "All packages installed"
 
 # ── Step 2: Back up existing dotfiles ────────────────────────────────────────
