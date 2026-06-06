@@ -31,6 +31,15 @@ brew "fd"              # Better 'find': faster, respects .gitignore
 brew "ripgrep"         # Better 'grep': very fast, respects .gitignore
 brew "tree"            # Show directory structure as a tree
 brew "jq"              # JSON processor: 'curl api | jq .name'
+brew "yazi"            # Terminal file manager — navigate dirs, preview files (alias: y)
+brew "ffmpegthumbnailer" # yazi: video thumbnails in file preview
+brew "unar"            # yazi: open archives in preview
+brew "poppler"         # yazi: PDF preview support
+brew "imagemagick"     # yazi: image preview support
+brew "exiftool"        # yazi: show media metadata in preview
+brew "tldr"            # Simplified man pages — 'tldr git' shows practical examples
+brew "ncdu"            # Interactive disk usage viewer — see what's eating space
+brew "httpie"          # Friendlier curl — 'http GET api.example.com' returns colored JSON
 
 # ── Version control ────────────────────────────────────────────────────────────
 brew "git"             # Version control
@@ -70,8 +79,10 @@ cask "bitwarden"            # Password manager
 cask "maccy"                # Clipboard history manager
 cask "the-unarchiver"       # Open .zip, .rar, .7z, .tar.gz files
 cask "appcleaner"           # Completely uninstall apps (removes all related files)
+cask "google-chrome"        # Browser
+cask "brave-browser"        # Browser (privacy-focused, built-in ad blocker)
 
-# Java JDK (managed by jenv)
+# Java JDK (managed by mise)
 cask "temurin"              # Eclipse Temurin OpenJDK (free, open-source)
 
 # ── Fonts ──────────────────────────────────────────────────────────────────────

@@ -1,0 +1,33 @@
+# Yazi file manager configuration.
+# Yazi is a terminal file manager with file previews, fuzzy search, and more.
+# Open it with the 'y' alias. Press '?' inside yazi to see all key bindings.
+# Docs: https://yazi-rs.github.io/docs/configuration/yazi
+
+[manager]
+# Show hidden files (dotfiles) by default
+show_hidden = true
+# Sort: directories first, then files, both alphabetically
+sort_by = "alphabetical"
+sort_dir_first = true
+
+[preview]
+# Use up to half the terminal width for the preview pane
+max_width = 600
+max_height = 900
+# Show image previews inline (requires a terminal that supports it)
+image_filter = "triangle"
+
+[opener]
+# Open files with these applications by default
+edit = [{ run = 'nvim "$@"', block = true, desc = "Neovim" }]
+open = [{ run = 'open "$@"', desc = "System default app" }]
+reveal = [{ run = 'open -R "$@"', desc = "Reveal in Finder" }]
+
+[open]
+rules = [
+    # Text files → Neovim
+    { mime = "text/*",        use = "edit" },
+    { mime = "application/json", use = "edit" },
+    # Everything else → system default
+    { mime = "*",             use = "open" },
+]

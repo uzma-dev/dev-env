@@ -74,6 +74,18 @@ alias path='echo $PATH | tr ":" "\n"'          # print PATH entries one per line
 alias ip='curl -s ifconfig.me'                 # get public IP
 alias ports='lsof -i -P -n | grep LISTEN'      # show open ports
 
+# ── File manager (yazi) ────────────────────────────────────────────────────────
+alias y='yazi'                                  # open file manager
+alias yy='yazi .'                               # open file manager in current dir
+
+# ── HTTP requests (httpie — friendlier than curl) ─────────────────────────────
+# Usage: GET https://api.example.com/users
+#        POST https://api.example.com/users name=Alice age:=30
+alias GET='http GET'
+alias POST='http POST'
+alias PUT='http PUT'
+alias DELETE='http DELETE'
+
 # ── Editors ────────────────────────────────────────────────────────────────────
 alias v='nvim'
 alias vi='nvim'
