@@ -6,9 +6,9 @@ local config = wezterm.config_builder()
 
 -- ── Font ───────────────────────────────────────────────────────────────────
 config.font = wezterm.font_with_fallback({
-    { family = "CaskaydiaCove Nerd Font", weight = "Regular" },  -- Cascadia Code with icons
-    { family = "JetBrainsMono Nerd Font" },                       -- fallback
-    "Symbols Nerd Font Mono",                                     -- icon fallback
+    { family = "Cascadia Code NF", weight = "Regular" },  -- Cascadia Code with Nerd Font icons
+    { family = "JetBrainsMono Nerd Font" },               -- fallback
+    "Symbols Nerd Font Mono",                             -- icon fallback
 })
 config.font_size = 14.0
 
