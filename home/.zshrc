@@ -32,27 +32,12 @@ source "${ZSH}/oh-my-zsh.sh"
 # ── Aliases ────────────────────────────────────────────────────────────────────
 source "${HOME}/.aliases"
 
-# ── Language version managers ──────────────────────────────────────────────────
-# These hooks intercept commands and route them to the correct version
-
-# Python (pyenv)
-if command -v pyenv &>/dev/null; then
-    eval "$(pyenv init -)"
-fi
-
-# Node.js (nodenv)
-if command -v nodenv &>/dev/null; then
-    eval "$(nodenv init -)"
-fi
-
-# Go (goenv)
-if command -v goenv &>/dev/null; then
-    eval "$(goenv init -)"
-fi
-
-# Java (jenv)
-if command -v jenv &>/dev/null; then
-    eval "$(jenv init -)"
+# ── Language version management (mise) ────────────────────────────────────────
+# mise manages Python, Node.js, Go, and Java versions from a single tool.
+# It intercepts commands (python, node, go, java) and routes them to the
+# correct version based on the nearest .mise.toml or global config.
+if command -v mise &>/dev/null; then
+    eval "$(mise activate zsh)"
 fi
 
 # ── Other tools ────────────────────────────────────────────────────────────────

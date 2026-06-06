@@ -40,15 +40,34 @@ Designed to be **easy to understand** — every tool has a one-line explanation,
 | [gh](https://cli.github.com/) | GitHub from the terminal — create PRs, clone repos |
 
 ### Language version management
-| Language | Manager | What it does |
-|----------|---------|-------------|
-| Python | [pyenv](https://github.com/pyenv/pyenv) | Install multiple Python versions, switch per-project |
-| Node.js | [nodenv](https://github.com/nodenv/nodenv) | Same for Node.js |
-| Go | [goenv](https://github.com/go-nv/goenv) | Same for Go |
-| Java | [jenv](https://www.jenv.be/) | Same for Java |
-| C++ | [llvm](https://llvm.org/) (brew) | Modern clang/clang++ compiler |
+| Tool | What it does |
+|------|-------------|
+| [mise](https://mise.jdx.dev/) | Single tool that manages Python, Node.js, Go, and Java versions |
+| [llvm](https://llvm.org/) (brew) | C/C++ compiler toolchain — `clang++` and `clang-format` |
 
-**Per-project versions**: Create a `.python-version`, `.node-version`, or `.go-version` file in a project directory and pyenv/nodenv/goenv will automatically use that version.
+**One tool instead of four.** mise replaces pyenv, nodenv, goenv, and jenv with a single consistent interface:
+
+```bash
+mise install python@latest    # install latest Python
+mise install node@lts         # install latest Node.js LTS
+mise install go@latest        # install latest Go
+mise install java@temurin-21  # install Java 21 LTS
+
+mise use --global python@latest   # set global default
+```
+
+**Per-project versions**: Add a `.mise.toml` to any project directory:
+
+```toml
+# .mise.toml — one file for all languages in this project
+[tools]
+python = "3.11"
+node   = "20"
+go     = "1.22"
+java   = "temurin-21"
+```
+
+Then run `mise install` inside the project to install those exact versions. mise switches automatically when you `cd` into the directory.
 
 ### Docker
 | Tool | What it does |
@@ -124,19 +143,20 @@ Edit `home/.aliases`, then run `reload` (alias for `source ~/.zshrc`).
 ### Change terminal font size
 Edit `home/.config/wezterm/wezterm.lua`, change `config.font_size`.
 
-### Install a specific Python version
+### Install a specific language version
 ```bash
-pyenv install 3.11.9
-pyenv global 3.11.9       # set as default everywhere
-# or for a specific project:
-cd my-project
-echo "3.11.9" > .python-version
-```
+# Install any version
+mise install python@3.11
+mise install node@20
+mise install go@1.22
+mise install java@temurin-21
 
-### Install a specific Node.js version
-```bash
-nodenv install 20.18.0
-nodenv global 20.18.0
+# Set as the global default
+mise use --global python@3.11
+
+# Pin a version for just one project
+cd my-project
+mise use python@3.11     # writes .mise.toml in the current directory
 ```
 
 ### Update everything
@@ -205,7 +225,7 @@ The leader key is **Space**. Press `Space` and wait 0.5s to see all available sh
 **Icons look like boxes or question marks**
 → Set your terminal font to `CaskaydiaCove Nerd Font` or `JetBrainsMono Nerd Font`.
 
-**`pyenv: command not found`**
+**`mise: command not found`** or language versions not switching
 → Open a new terminal window, or run `source ~/.zshrc`.
 
 **Neovim plugins didn't install**

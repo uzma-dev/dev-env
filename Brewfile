@@ -50,14 +50,12 @@ brew "fastfetch"       # Print system info (run 'fastfetch' in terminal)
 brew "shellcheck"      # Shell script linter (catches bugs in .sh files)
 brew "shfmt"           # Shell script formatter
 
-# ── Language version managers ──────────────────────────────────────────────────
-# Each manager lets you install multiple versions of a language and switch
-# between them per-project using a .python-version / .node-version / etc. file.
-brew "pyenv"           # Python version manager
-brew "nodenv"          # Node.js version manager
-brew "goenv"           # Go version manager
-brew "jenv"            # Java version manager
-brew "llvm"            # C/C++ compiler toolchain (modern clang/clang++)
+# ── Language version management ────────────────────────────────────────────────
+# mise is a single tool that replaces pyenv, nodenv, goenv, and jenv.
+# One command: 'mise install python@latest', 'mise install node@lts', etc.
+# One file per project: .mise.toml listing all required language versions.
+brew "mise"            # Polyglot version manager (Python, Node, Go, Java, and more)
+brew "llvm"            # C/C++ compiler toolchain (modern clang/clang++) — not managed by mise
 brew "clang-format"    # C/C++ code formatter
 brew "direnv"          # Load .envrc files per-directory (project env vars)
 
