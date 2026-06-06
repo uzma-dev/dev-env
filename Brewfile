@@ -2,9 +2,6 @@
 # Run 'brew bundle' to install everything, or let install.sh handle it.
 # Run 'brew bundle check' to see what's missing.
 
-# ── Taps (extra package sources) ─────────────────────────────────────────────
-tap "homebrew/cask-fonts"
-
 # ── GNU utilities ─────────────────────────────────────────────────────────────
 # These replace the older BSD versions that ship with macOS.
 # After install, they're accessible from the PATH set in .exports.
